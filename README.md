@@ -117,21 +117,41 @@ Usage
 
 ### 1\. Books
 
-*   To get a list of all books use make an HTTP GET request to: http://localhost:8000/api/books Example: `curl "http://localhost:8000/api/books"`
-*   To get the details of a particular book, make a GET request to the URL: http://localhost:8000/api/books/<id> Replace <id> with an integer representing the books id e.g. 1, 2, 3, ... as show below: `curl "http://localhost:8000/api/books/23"`
+*   To get a list of all books use make an HTTP GET request to: http://localhost:8000/api/books Example: 
+```CMD
+curl "http://localhost:8000/api/books"
+```
+*   To get the details of a particular book, make a GET request to the URL: http://localhost:8000/api/books/<id> Replace <id> with an integer representing the books id e.g. 1, 2, 3, ... as show below: 
+```CMD
+curl "http://localhost:8000/api/books/23"
+```
 
 ### 2\. Book Characters
 
-*   To get a list of **all characters** make an HTTP GET request to: http://localhost:8000/api/characters Example: `curl "http://localhost:8000/api/characters"`
-*   To get the **details of a particular character**, make a GET request to the URL: http://localhost:8000/api/characters/<id> Replace <id> with an integer representing the characters id e.g. 1, 2, 3, ... as show below: `curl "http://localhost:8000/api/characters/2"`
-*   To get a list **of all characters in a particular book** e.g. 2, make a GET request to the URL: http://localhost:8000/api/books/<id>/characters Replace <id> with an integer representing the characters id e.g. 1, 2, 3, ... as show below: `curl "http://localhost:8000/api/books/2/characters"`
+*   To get a list of **all characters** make an HTTP GET request to: http://localhost:8000/api/characters Example: 
+```CMD
+curl "http://localhost:8000/api/characters"
+```
+*   To get the **details of a particular character**, make a GET request to the URL: http://localhost:8000/api/characters/<id> Replace <id> with an integer representing the characters id e.g. 1, 2, 3, ... as show below: 
+```CMD
+curl "http://localhost:8000/api/characters/2"
+```
+*   To get a list **of all characters in a particular book** e.g. 2, make a GET request to the URL: http://localhost:8000/api/books/<id>/characters Replace <id> with an integer representing the characters id e.g. 1, 2, 3, ... as show below: 
+```CMD
+curl "http://localhost:8000/api/books/2/characters"
+```
 
 ### 3\. Book Comments
 
-*   To get a list of **all comments made for a particular book**, make an HTTP GET request to: http://localhost:8000/api/books/<id>/comments Replace <id> with a book id e.g. 1, 2, 3, etc. Example: `curl "http://localhost:8000/api/books/2/comments"` The above will return a list of comments for the book with an id of 2.
+*   To get a list of **all comments made for a particular book**, make an HTTP GET request to: http://localhost:8000/api/books/<id>/comments Replace <id> with a book id e.g. 1, 2, 3, etc. Example: 
+```CMD
+curl "http://localhost:8000/api/books/2/comments"
+``` 
+	The above command will return a list of comments for the book with an id of 2.
+
 *   To **add a comment to a particular book**, send your POST request to the URL: http://localhost:8000/api/comments and include the parameters **isbn** and **comment**.  
     Both isbn and comment parameters should of type string and the isbn should be valid for a particular book. The comment parameter is limited to a maximum of 500 characters.  
-    Generally, a POST request is sent via an HTML form. The data send to the form is usually encoded in either multipart/form-data, application/json or application/x-www-form-urlencoded content type.
+    Generally, a POST request is sent via an HTML form. The data send to the form is usually encoded in either **multipart/form-data, application/json or application/x-www-form-urlencoded** content type.
 
 Limitations
 -----------
