@@ -1,6 +1,5 @@
-# Welcome to An Extended API of Ice & Fire | Documetation Page
-
-[Home](/) Documentation [GitHub](https://github.com/syengo254/An-Extended-API-of-Ice-Fire)
+# Welcome to An Extended API of Ice & Fire 
+## Documetation Page
 
 #### Navigation
 
@@ -30,23 +29,18 @@ Endpoints
 
 The following table below highlights the available endpoints, HTTP method and a description.
 
-| \# | Endpoint | URL | HTTP Verb | Description |
-|----|--------------------------------------------------------------------|---------|----------------------------------------------------|
-| 1. | [http://localhost:8000/api/books](http://localhost:8000/api/books) | GET | This will return a JSON response of an object with a list of all available books. |
-
-| 2. | [http://localhost:8000/api/books/1](http://localhost:8000/api/books/1) | GET | This will return a JSON response of the book with and **id** of 1. |
-
-| 3. | [http://localhost:8000/api/books/1/comments](http://localhost:8000/api/books/1/comments) | GET | This will return a JSON response of comments for the book with an **id** of 1. |
-
-| 4.| [http://localhost:8000/api/books/1/characters](http://localhost:8000/api/books/1/characters) | GET | This will return a JSON response of the characters for the book with an **id** of 1.|
-
-| 5. | [http://localhost:8000/api/characters](http://localhost:8000/api/characters) | GET | Returns a JSON response of all available book characters. |
-
-| 6. | [http://localhost:8000/api/characters/23](http://localhost:8000/api/characters/23) | GET | Return a JSON response with the character details with an **id** of 23. |
-
-| 7. | [http://localhost:8000/api/comments](http://localhost:8000/api/comments) | POST | Send a POST request to this endpoint to add a comment for a particular book that is identified by its ISBN number. Required params are:  
+|  \# 	|   Endpoint URL	|   HTTP Verb	|   Description	|   	|
+|---	|---	|---	|---	|---	|
+|   1.	|   [http://localhost:8000/api/books](http://localhost:8000/api/books)	| GET 	|   This will return a JSON response of an object with a list of all available books.	|   	|
+|   2.	|   [http://localhost:8000/api/books/1](http://localhost:8000/api/books/1)	| GET 	|   This will return a JSON response of the book with and **id** of 1.	|   	|
+|   3.	|   [http://localhost:8000/api/books/1/comments](http://localhost:8000/api/books/1/comments)	|   GET	|   This will return a JSON response of comments for the book with an **id** of 1.	|   	|
+|   4.	|   [http://localhost:8000/api/books/1/characters](http://localhost:8000/api/books/1/characters)	|   GET	|   This will return a JSON response of the characters for the book with an **id** of 1.	|   	|
+|   5.	|   [http://localhost:8000/api/characters](http://localhost:8000/api/characters)	|   GET	|   Returns a JSON response of all available book characters.	|   	|
+|   6.	|   [http://localhost:8000/api/characters/23](http://localhost:8000/api/characters/23)	|   GET	|   Return a JSON response with the character details with an **id** of 23.	|   	|
+|   7.	|   [http://localhost:8000/api/comments](http://localhost:8000/api/comments)	|   POST	|   Send a POST request to this endpoint to add a comment for a particular book that is identified by its ISBN number. Required params are:  
 1.  isbn - ISBN number - text
-1.  comment - The comment text - limited to 500 characters |
+1.  comment - The comment text - limited to 500 characters	|   	|
+
 
 Response Structure
 ------------------
@@ -60,6 +54,7 @@ See below example:
 
 ```json
 {
+	"success": 1,
 	"data": {
 		"book": {
 			"name": "A Game of Thrones",
