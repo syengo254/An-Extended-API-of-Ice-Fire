@@ -166,7 +166,7 @@ More details on the API are available at [AN API OF ICE AND FIRE](https://anapio
 
 This project uses a MIT license.
 
-© 2022 - David Syengo. http://localhost:8000 [![GitHub profile link icon](https://github.com/syengo254/An-Extended-API-of-Ice-Fire/blob/master/public/img/icons8-github-30.png?raw=true)](https://github.com/syengo254)
+© 2022 - David Syengo. [![GitHub profile link icon](https://github.com/syengo254/An-Extended-API-of-Ice-Fire/blob/master/public/img/icons8-github-30.png?raw=true)](https://github.com/syengo254)
 
 
 # Lumen PHP Framework
