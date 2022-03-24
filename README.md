@@ -19,6 +19,38 @@ Introduction
 
 This documentation is meant to enable you to consume our API and get you started right away using your favourite programming language. All endpoints and HTTP methods to be used have been detailed with a sample example for each.
 
+Requirements
+------------
+1. PHP 8.0 and above.
+1. MySQL or MariaDB server
+1. Composer dependency manager for PHP.
+1. Access to a terminal prompt.
+1. Git & Git Bash to run git commands.
+
+Installation
+------------
+
+1. Clone this repository using the command 
+```git
+git clone https://github.com/syengo254/An-Extended-API-of-Ice-Fire.git
+ ```
+1. Create a database named 'topup_mama' on your MySQL server. If teh server is not local, edit the .env DB_HOST=127.0.0.1 entry to DB_HOST=\<your server name\>; as well as DB_USERNAME & DB_PASSWORD keys.
+1. Navigate to the project folder and open a terminal window from that directory or use cd command.
+1. Run the composer update command to install all project dependencies
+```CMD
+composer update
+```
+1. Run the PHP artisan migration command
+```CMD
+php artisan migrate
+```
+1. Run the below command to finally run a deveopment PHP server to serve the project on http://localhost:8000/
+```CMD
+php -S localhost:8000 -t public
+```
+1. Access the URL endpoints as defined on the Endpoints section below.
+
+
 Versioning
 ----------
 
@@ -31,13 +63,13 @@ The following table below highlights the available endpoints, HTTP method and a 
 
 |  \# 	|   Endpoint URL	|   HTTP Verb	|   Description	|   	|
 |---	|---	|---	|---	|---	|
-|   1.	|   [http://localhost:8000/api/books](http://localhost:8000/api/books)	| GET 	|   This will return a JSON response of an object with a list of all available books.	|   	|
-|   2.	|   [http://localhost:8000/api/books/1](http://localhost:8000/api/books/1)	| GET 	|   This will return a JSON response of the book with and **id** of 1.	|   	|
-|   3.	|   [http://localhost:8000/api/books/1/comments](http://localhost:8000/api/books/1/comments)	|   GET	|   This will return a JSON response of comments for the book with an **id** of 1.	|   	|
-|   4.	|   [http://localhost:8000/api/books/1/characters](http://localhost:8000/api/books/1/characters)	|   GET	|   This will return a JSON response of the characters for the book with an **id** of 1.	|   	|
-|   5.	|   [http://localhost:8000/api/characters](http://localhost:8000/api/characters)	|   GET	|   Returns a JSON response of all available book characters.	|   	|
-|   6.	|   [http://localhost:8000/api/characters/23](http://localhost:8000/api/characters/23)	|   GET	|   Return a JSON response with the character details with an **id** of 23.	|   	|
-|   7.	|   [http://localhost:8000/api/comments](http://localhost:8000/api/comments)	|   POST	|   Send a POST request to this endpoint to add a comment for a particular book that is identified by its ISBN number. Required params are:  
+|   1.	|   [/api/books](http://localhost:8000/api/books)	| GET 	|   This will return a JSON response of an object with a list of all available books.	|   	|
+|   2.	|   [/api/books/1](http://localhost:8000/api/books/1)	| GET 	|   This will return a JSON response of the book with and **id** of 1.	|   	|
+|   3.	|   [/api/books/1/comments](http://localhost:8000/api/books/1/comments)	|   GET	|   This will return a JSON response of comments for the book with an **id** of 1.	|   	|
+|   4.	|   [/api/books/1/characters](http://localhost:8000/api/books/1/characters)	|   GET	|   This will return a JSON response of the characters for the book with an **id** of 1.	|   	|
+|   5.	|   [/api/characters](http://localhost:8000/api/characters)	|   GET	|   Returns a JSON response of all available book characters.	|   	|
+|   6.	|   [/api/characters/23](http://localhost:8000/api/characters/23)	|   GET	|   Return a JSON response with the character details with an **id** of 23.	|   	|
+|   7.	|   [/api/comments](http://localhost:8000/api/comments)	|   POST	|   Send a POST request to this endpoint to add a comment for a particular book that is identified by its ISBN number. Required params are:  
 1.  isbn - ISBN number - text
 1.  comment - The comment text - limited to 500 characters	|   	|
 
