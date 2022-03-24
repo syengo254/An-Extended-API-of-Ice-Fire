@@ -34,21 +34,22 @@ Installation
 ```git
 git clone https://github.com/syengo254/An-Extended-API-of-Ice-Fire.git
  ```
-2. Create a database named 'topup_mama' on your MySQL server. If the server is not local, edit the .env DB_HOST=127.0.0.1 entry to DB_HOST=\<your server name\>; as well as DB_USERNAME & DB_PASSWORD keys.
-3. Navigate to the project folder and open a terminal window from that directory or use cd command.
-4. Run the composer update command to install all project dependencies
+2. Copy the .ev.example file and rename the copy to .env and edit the entry keys in the next step.
+3. Create a database named 'topup_mama' on your MySQL server. If the server is not local, edit the .env DB_HOST=127.0.0.1 entry to DB_HOST=\<your server name\>; as well as DB_USERNAME & DB_PASSWORD keys.
+4. Navigate to the project folder and open a terminal window from that directory or use cd command.
+5. Run the composer update command to install all project dependencies
 ```CMD
 composer update
 ```
-5. Run the PHP artisan migration command
+6. Run the PHP artisan migration command
 ```CMD
 php artisan migrate
 ```
-6. Run the below command to finally run a deveopment PHP server to serve the project on http://localhost:8000/
+7. Run the below command to finally run a deveopment PHP server to serve the project on http://localhost:8000/
 ```CMD
 php -S localhost:8000 -t public
 ```
-7. Access the URL endpoints as defined on the Endpoints section below.
+8. Access the URL endpoints as defined on the Endpoints section below.
 
 
 Versioning
