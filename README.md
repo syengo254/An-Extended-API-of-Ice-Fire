@@ -11,8 +11,8 @@
 *   [Limitations](#limits)
 *   [Licensing](#license)
 
-An Extended API of Ice & Fire Documetation
-==========================================
+Documetation
+============
 
 Introduction
 ------------
