@@ -18,7 +18,7 @@ $router->get('/', function(){
 });
 
 $router->get('/api/docs', function(){
-    return 'This is the api docs';
+    return view('docs.index');
 });
 
 
