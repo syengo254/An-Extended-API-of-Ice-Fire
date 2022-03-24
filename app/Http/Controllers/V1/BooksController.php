@@ -40,6 +40,7 @@ class BooksController extends Controller
             }
 
             return response()->json([
+                "success" => 1,
                 "data" => (new BookResource($books, true))->withOnly(['name', 'isbn', 'authors', 'released', 'comments_count', 'comments']),
                 "pages" => $bookResource->getPagination(),
             ]);
@@ -72,6 +73,7 @@ class BooksController extends Controller
             $book->released = date('Y-m-d', strtotime($book->released));
 
             return response()->json([
+                "success" => 1,
                 "data" => (new BookResource($book, false))->withOnly(['name', 'isbn', 'authors', 'released', 'comments_count']),
             ]);
         }
@@ -92,6 +94,7 @@ class BooksController extends Controller
 
         if($book){
             return response()->json([
+                "success" => 1,
                 "book" => (new BookResource($book, false))->withOnly(['name', 'isbn', 'url', 'authors']),
                 "characters" => $characters,
             ]);

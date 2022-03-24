@@ -75,6 +75,7 @@ class CharactersController extends Controller
             }
             
             return response()->json([
+                "success" => 1,
                 "data" => $characters,
                 "metadata" => [
                     "matched_count" => count($characters),
@@ -111,6 +112,7 @@ class CharactersController extends Controller
             $age = DateHelper::getCharacterAge($character->born, $character->died);
 
             return response()->json([
+                "success" => 1,
                 "data" => $character,
                 //add Metadata
                 "metadata" => [

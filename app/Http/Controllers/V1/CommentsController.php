@@ -22,6 +22,7 @@ class CommentsController extends Controller
             $book->comment_count = $comments->count();
 
             return response()->json([
+                "success" => 1,
                 "data" => [
                     "book" => (new BookResource($book, false))->withOnly(['name', 'isbn', 'url', 'comment_count', 'authors']),
                     "comments" => $comments->toArray(),
