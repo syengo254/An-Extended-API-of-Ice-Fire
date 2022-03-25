@@ -28,6 +28,10 @@ class BooksController extends Controller
             $params["pageSize"] = $request->input("pageSize"); 
         }
 
+        if($request->has("name")){
+            $params += [ "name" => $request->input("name")]; 
+        }
+
         $bookResource = new BookAPIResource('books');
         $books = $bookResource->getAllBooks($params);
 

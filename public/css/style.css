@@ -184,3 +184,15 @@ footer {
     align-items: center;
     height: 150px;
 }
+
+.filters {
+    margin: .5rem;
+    font-size: 1rem;
+    font-weight: 300;
+    color: black;
+}
+
+.filters > pre {
+    font-size: .8rem;
+    color: rgb(54, 141, 54);
+}

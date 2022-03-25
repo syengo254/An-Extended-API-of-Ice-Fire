@@ -26,6 +26,8 @@
                 <li><a href="#versions">Versions</a></li>
                 <li><a href="#endpoints">Available Endpoints</a></li>
                 <li><a href="#structure">General Structure</a></li>
+                <li><a href="#pagination">Pagination</a></li>
+                <li><a href="#filters">Request Filters</a></li>
                 <li><a href="#usage">Resources Usage</a></li>
                 <li><a href="#limits">Limitations</a></li>
                 <li><a href="#license">Licensing</a></li>
@@ -186,6 +188,58 @@
                     </p>
                 </div>
             </div>
+            <div class="doc-item" id="pagination">
+                <div class="doc-item-title">
+                    <h2>Pagination</h2>
+                </div>
+                <div class="doc-item-body">
+                    <p>Results for requests that respond with lists e.g. books' list and characters' list, will be paginated. You can make a request and specify a page and pageSize as GET URL parameters. The pagination links are also included
+                        by default in the JSON object response named "pages". The 'pages' object has links with the keys 'prev', 'first' & 'last' and a 'total_pages' object. You can use to create pagination for your app that
+                        will consume our API.
+                    </p>
+                    <p>
+                        An example like below:
+                        <code>
+                            curl {{ env('APP_URL') }}/api/books?page=2&pageSize=10
+                        </code>
+                        The results will look like below:
+                        <pre>
+                            {
+                                "success": 1,
+                                "data": [
+                                    {
+                                    "name": "The World of Ice and Fire",
+                                    "isbn": "978-0553805444",
+                                    "authors": [
+                                    "Elio Garcia",
+                                    "Linda Antonsson",
+                                    "George R. R. Martin"
+                                    ],
+                                    "released": "2014-10-28",
+                                    "comments": []
+                                    },
+                                ...],
+                                "pages": {
+                                    "prev": "http://localhost:8000/api/books?page=1&pageSize=10",
+                                    "first": "http://localhost:8000/api/books?page=1&pageSize=10",
+                                    "last": "http://localhost:8000/api/books?page=2&pageSize=10",
+                                    "total_pages": 2
+                                }
+                            }
+                        </pre>
+                    </p>
+                </div>
+            </div>
+            <div class="doc-item" id="filters">
+                <div class="doc-item-title">
+                    <h2>Result Filters</h2>
+                </div>
+                <div class="doc-item-body">
+                    <p>
+                        You can specify filters via URL GET params for specific results. Available filters for every resource are listed in the next <a href="#usage">section</a>.
+                    </p>
+                </div>
+            </div>
             <div class="doc-item" id="usage">
                 <div class="doc-item-title">
                     <h2>Usage</h2>
@@ -201,6 +255,21 @@
                                     <code>
                                         curl "{{env('APP_URL')}}/api/books"
                                     </code>
+                                    <div class="filters">
+                                        Available filters: <em>&lt;name&gt;</em> <code>e.g. {{env('APP_URL')}}/api/books?name=A Game of Thrones</code>
+                                        This will return:
+                                        <pre>
+                                            {
+                                                "success": 1,
+                                                "data": [
+                                                {
+                                                "name": "A Game of Thrones",
+                                                "isbn": "978-0553103540",
+                                                "authors": [
+                                                "George R. R. Martin"
+                                            ...}
+                                        </pre>
+                                    </div>
                                 </li>
                                 <li>
                                     To get the details of a particular book, make a GET request to the URL: {{env('APP_URL')}}/api/books/&lt;id&gt;
@@ -222,6 +291,33 @@
                                     <code>
                                         curl "{{env('APP_URL')}}/api/characters"
                                     </code>
+                                    <div class="filters">
+                                        Available filters: <em>&lt;name&gt;</em>, <em>&lt;gender&gt;</em>,
+                                        <code>e.g. {{env('APP_URL')}}/api/characters?name=Nysterica</code>
+                                        This will return:
+                                        <pre>
+                                            {
+                                                "success": 1,
+                                                "data": [
+                                                    {
+                                                    "url": "http://localhost:8000/api/characters/21",
+                                                    "name": "Nysterica",
+                                                    "gender": "Female",
+                                                    ...}
+                                                ...],                                                
+                                                ...},
+                                                "metadata": {
+                                                    "matched_count": 1,
+                                                    "total_age": {...}
+                                                },
+                                                "pages": {...}
+                                            }
+                                        </pre>
+                                        Another example:
+                                        <code>
+                                            curl {{env('APP_URL')}}/api/characters?gender=Female
+                                        </code>
+                                    </div>
                                 </li>
                                 <li>
                                     To get the <b>details of a particular character</b>, make a GET request to the URL: {{env('APP_URL')}}/api/characters/&lt;id&gt;
@@ -236,8 +332,24 @@
                                     <code>
                                         curl "{{env('APP_URL')}}/api/books/2/characters"
                                     </code>
+                                    <div class="filters">
+                                        Available filters: <em>&lt;name&gt;</em>, <em>&lt;gender&gt;</em>
+                                        <code>e.g. {{env('APP_URL')}}/books/2/characters?name=Nysterica</code>
+                                        <code>
+                                            e.g. {{env('APP_URL')}}/books/2/characters?gender=Female
+                                        </code>
+                                    </div>
                                 </li>
                             </ul>
+                            <div class="filters">
+                                All character list request are sortable by name in both ascending and descebding order. This can be specified via GET URL params:
+                                <em>&lt;sortby&gt;</em> & <em>&lt;order&gt;</em>
+                                <code>e.g. {{env('APP_URL')}}/characters?gender=Male&sortby=name&order=desc</code>
+                                <code>
+                                    e.g. {{env('APP_URL')}}/books/2/characters?page=12&pageSize=7&sortby=name&order=asc
+                                </code>
+                                <small>Default sort order will default to asc (ascending) if not specified.</small>
+                            </div>
                         </p>
                     </div>
                     <div class="resource">
