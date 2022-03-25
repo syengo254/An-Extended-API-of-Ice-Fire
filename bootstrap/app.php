@@ -54,7 +54,12 @@ $app->singleton(
 |--------------------------------------------------------------------------
 */
 
-$app->register(Fruitcake\Cors\CorsServiceProvider::class);
+//$app->register(Fruitcake\Cors\CorsServiceProvider::class);
+$app->middleware([
+    App\Http\Middleware\CorsMiddleware::class
+ ]);
+ 
+ $app->register(App\Providers\CatchAllOptionsRequestsProvider::class);
 
 /*
 |--------------------------------------------------------------------------

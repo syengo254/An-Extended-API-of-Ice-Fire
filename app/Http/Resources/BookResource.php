@@ -33,7 +33,7 @@ class BookResource {
         $newBookItem =  new stdClass();
 
         foreach($props as $prop){
-            if($obj->$prop){
+            if(property_exists($obj, $prop)){
                 $newBookItem->$prop = $obj->$prop;
             }
         }

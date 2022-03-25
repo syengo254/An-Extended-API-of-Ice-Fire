@@ -1,6 +1,7 @@
 <?php
 namespace App\Services\V1;
 
+//use App\Helpers\CharacterHelper;
 use App\Helpers\PaginationHelper;
 use App\Helpers\URLHelper;
 
@@ -17,6 +18,8 @@ class CharacterAPIResource extends APIResource {
 
         if(!$this->error){
             $characters = $response["body"];
+
+            //$characters = CharacterHelper::GetCharacterBooks($characters);
 
             $this->pagination_links = $response["headers"]["Link"][0];
             $this->characters = URLHelper::modifyCharactersURLs($characters);

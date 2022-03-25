@@ -12,6 +12,12 @@ class URLHelper {
         foreach($books as $book) {
             $book->url = str_replace('https://anapioficeandfire.com', env('APP_URL'), $book->url);
 
+             // Extract book's id from it's url property
+             $url = $book->url;
+             $s = strpos($url, 'books/', 5) + 6;
+             $val = (int) substr($url, $s, strlen($url) - $s );
+             $book->id = $val;
+
             $characters = [];
 
             foreach($book->characters as $character){
@@ -46,6 +52,12 @@ class URLHelper {
         foreach($characters as $character) {
             $character->url = str_replace('https://anapioficeandfire.com', env('APP_URL'), $character->url);
             $character->url = str_replace('https://www.anapioficeandfire.com', env('APP_URL'), $character->url);
+
+            // Extract character's id from it's url property
+            $url = $character->url;
+            $s = strpos($url, 'characters/', 5) + 11;
+            $val = (int) substr($url, $s, strlen($url) - $s );
+            $character->id = $val;
 
             if($character->spouse){
                 $character->spouse = str_replace('https://anapioficeandfire.com', env('APP_URL'), $character->spouse);

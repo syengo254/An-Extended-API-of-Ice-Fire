@@ -70,14 +70,14 @@ class CommentsController extends Controller
             return response()->json([
                 "success" => 1,
                 "message" => "comment added",
-                "comment" => $comment,
+                "data" => $comment,
             ]);
         }
         else{
             return response()->json([
                 "success" => 0,
                 "message" => "Failed to save comment!",
-                "comment" => NULL,
+                "data" => NULL,
             ]);
         }
     }
@@ -90,7 +90,7 @@ class CommentsController extends Controller
      */
     private function commentExists($data) : bool {
         $comment = Comment::where('isbn', "=", $data['isbn'])
-            ->where('user_ip', "=",$data['user_ip'])->first()
+            ->where('user_ip', "=",$data['user_ip'])
             ->where('comment', "LIKE", '%' . $data['comment'] . '%')->first();
 
         if($comment && $comment->id) return true;
