@@ -342,7 +342,7 @@
                                 </li>
                             </ul>
                             <div class="filters">
-                                All character list request are sortable by name in both ascending and descebding order. This can be specified via GET URL params:
+                                All character list request are sortable by name in both ascending and descending order. This can be specified via GET URL params:
                                 <em>&lt;sortby&gt;</em> & <em>&lt;order&gt;</em>
                                 <code>e.g. {{env('APP_URL')}}/characters?gender=Male&sortby=name&order=desc</code>
                                 <code>

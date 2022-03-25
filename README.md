@@ -110,7 +110,47 @@ See below example:
 	}
 }
 
+```
+
+Pagination
+----------
+
+Results for requests that respond with lists e.g. books' list and characters' list, will be paginated. You can make a request and specify a page and pageSize as GET URL parameters. The pagination links are also included by default in the JSON object response named "pages". The 'pages' object has links with the keys 'prev', 'first' & 'last' and a 'total\_pages' object. You can use to create pagination for your app that will consume our API.
+
+An example like below: ```CMD
+curl http://localhost:8000/api/books?page=2&pageSize=10
+``` 
+The results will look like below:
+```JSON
+{
+	"success": 1,
+	"data": [
+		{
+		"name": "The World of Ice and Fire",
+		"isbn": "978-0553805444",
+		"authors": [
+		"Elio Garcia",
+		"Linda Antonsson",
+		"George R. R. Martin"
+		],
+		"released": "2014-10-28",
+		"comments": [...]
+		},
+	...],
+	"pages": {
+		"prev": "http://localhost:8000/api/books?page=1&pageSize=10",
+		"first": "http://localhost:8000/api/books?page=1&pageSize=10",
+		"last": "http://localhost:8000/api/books?page=2&pageSize=10",
+		"total_pages": 2
+	}
+}
 ```                        
+
+Result Filters
+--------------
+
+You can specify filters via URL GET params for specific results. Available filters for every resource are listed in the next [section](#usage).
+
 
 Usage
 -----
@@ -121,6 +161,18 @@ Usage
 ```CMD
 curl "http://localhost:8000/api/books"
 ```
+	Available filters: _<name>_ `e.g. http://localhost:8000/api/books?name=A Game of Thrones` This will return:
+	```JSON
+		{
+			"success": 1,
+			"data": \[
+			{
+			"name": "A Game of Thrones",
+			"isbn": "978-0553103540",
+			"authors": \[
+			"George R. R. Martin"
+		...}
+	```
 *   To get the details of a particular book, make a GET request to the URL: http://localhost:8000/api/books/<id> Replace <id> with an integer representing the books id e.g. 1, 2, 3, ... as show below: 
 ```CMD
 curl "http://localhost:8000/api/books/23"
@@ -132,6 +184,27 @@ curl "http://localhost:8000/api/books/23"
 ```CMD
 curl "http://localhost:8000/api/characters"
 ```
+Available filters: _<name>_, _<gender>_, `e.g. http://localhost:8000/api/characters?name=Nysterica` This will return:
+    ```JSON
+	{
+		"success": 1,
+		"data": [
+			{
+			"url": "http://localhost:8000/api/characters/21",
+			"name": "Nysterica",
+			"gender": "Female",
+			...}
+		...],                                                
+		...},
+		"metadata": {
+			"matched_count": 1,
+			"total_age": {...}
+		},
+		"pages": {...}
+	}								
+	```
+Another example: `curl http://localhost:8000/api/characters?gender=Female`
+
 *   To get the **details of a particular character**, make a GET request to the URL: http://localhost:8000/api/characters/<id> Replace <id> with an integer representing the characters id e.g. 1, 2, 3, ... as show below: 
 ```CMD
 curl "http://localhost:8000/api/characters/2"
@@ -140,6 +213,10 @@ curl "http://localhost:8000/api/characters/2"
 ```CMD
 curl "http://localhost:8000/api/books/2/characters"
 ```
+Available filters: _<name>_, _<gender>_ `e.g. http://localhost:8000/books/2/characters?name=Nysterica` `e.g. http://localhost:8000/books/2/characters?gender=Female`
+    
+
+All character list request are sortable by name in both ascending and descending order. This can be specified via GET URL params: _<sortby>_ & _<order>_ `e.g. http://localhost:8000/characters?gender=Male&sortby=name&order=desc` `e.g. http://localhost:8000/books/2/characters?page=12&pageSize=7&sortby=name&order=asc` Default sort order will default to asc (ascending) if not specified.
 
 ### 3\. Book Comments
 
