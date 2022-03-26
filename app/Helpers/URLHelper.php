@@ -9,6 +9,8 @@ class URLHelper {
      * 
      */
     public static function modifyBooksURLs($books) {
+		if(count($books) < 1) return [];
+		
         foreach($books as $book) {
             $book->url = str_replace('https://anapioficeandfire.com', env('APP_URL'), $book->url);
 
@@ -46,6 +48,8 @@ class URLHelper {
      * 
      */
     public static function modifyCharactersURLs($characters) {
+		if(count($characters) < 1) return [];
+		
         /**
          * NOTE: str_replace is done twice because some character instances have www. in the url
          */
@@ -86,6 +90,8 @@ class URLHelper {
      * @return array of the new modified urls
      */
     public static function toLocalURLs($urls) {
+		if(count($urls) < 1) return [];
+		
         $new_urls = [];
 
         foreach($urls as $url) {

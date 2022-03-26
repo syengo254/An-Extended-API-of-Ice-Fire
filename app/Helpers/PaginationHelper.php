@@ -13,6 +13,8 @@ class PaginationHelper {
      */
     public static function getPaginationData( $pagination_links ){
         $page_values = explode(",", $pagination_links);
+		
+		if(count($page_values) < 1) return [];
 
         // array initialized as empty to hold the links and their key name 
         // e.g. ["last" => "http://example.com/api/books?page=2"]

@@ -44,7 +44,23 @@ class CharactersController extends Controller
         $charactersResource = new CharacterAPIResource('characters');
         $characters = $charactersResource->getAllCharacters($params);
 
-        if($characters) {
+        if($characters !== FALSE) {
+            //if empty return response
+            if(count($characters) < 1){
+                return response()->json([
+                    "success" => 1,
+                    "data" => $characters,
+                    "metadata" => [
+                        "matched_count" => count($characters),
+                        "total_age" => [
+                            "in_months" => 0,
+                            "in_years" => 0,
+                        ],
+                    ],
+                    "pages" => [],
+                ]);
+            }
+
             // if sortby param is specified we shall sort the return response object using usort()
             if($request->has("sortby")){
                 $sortby = $request->input("sortby"); 

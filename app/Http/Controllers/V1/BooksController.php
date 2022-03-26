@@ -36,7 +36,7 @@ class BooksController extends Controller
         $bookResource = new BookAPIResource('books');
         $books = $bookResource->getAllBooks($params);
 
-        if($books){
+        if($books !== FALSE){
             foreach( $books as $book ){
                 $book_comments = Comment::getBookComments($book->isbn);
                 $book->comments = $book_comments["comments"];
@@ -53,7 +53,7 @@ class BooksController extends Controller
         else{
             return response()->json([
                 "success" => 0,
-                "message" => "Failed to get available books!",
+                "message" => "Failed to get available books or resource not found!",
                 "error" => $bookResource->error_message,
             ]);
         }

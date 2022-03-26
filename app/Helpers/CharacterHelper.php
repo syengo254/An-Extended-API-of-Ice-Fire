@@ -4,6 +4,8 @@ namespace App\Helpers;
 class CharacterHelper {
 
     public static function GetCharacterBooks($characters) {
+		if(count($characters) < 1) return [];
+		
         foreach($characters as $character) {
             $books = $character->books;
             foreach( $books as $book){
