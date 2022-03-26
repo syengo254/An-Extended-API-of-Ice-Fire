@@ -86,10 +86,13 @@ class URLHelper {
      * @return array of the new modified urls
      */
     public static function toLocalURLs($urls) {
+        $new_urls = [];
+
         foreach($urls as $url) {
-            $url = str_replace('https://www.anapioficeandfire.com', env('APP_URL'), $url);
+            $new_urls[] = str_replace('https://www.anapioficeandfire.com', env('APP_URL'), $url);
         }
-        return $urls;
+        
+        return $new_urls;
     }
 
     /**
