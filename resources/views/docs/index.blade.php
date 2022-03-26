@@ -28,7 +28,16 @@
                 <li><a href="#structure">General Structure</a></li>
                 <li><a href="#pagination">Pagination</a></li>
                 <li><a href="#filters">Request Filters</a></li>
-                <li><a href="#usage">Resources Usage</a></li>
+                <li>
+                    <div><a href="#usage">Resources Usage</a></div>
+                    <div>
+                        <ol>
+                            <li><a href="#books">Books</a></li>
+                            <li><a href="#characters">Characters</a></li>
+                            <li><a href="#comments">Comments</a></li>
+                        </ol>
+                    </div>
+                </li>
                 <li><a href="#limits">Limitations</a></li>
                 <li><a href="#license">Licensing</a></li>
             </ul>
@@ -246,7 +255,7 @@
                 </div>
                 <div class="doc-item-body">
                     <div class="resource">
-                        <h3>1. Books</h3>
+                        <h3 id="books">1. Books</h3>
                         <p>
                             <ul>
                                 <li>
@@ -300,7 +309,7 @@
                         </p>
                     </div>
                     <div class="resource">
-                        <h3>2. Book Characters</h3>
+                        <h3 id="characters">2. Book Characters</h3>
                         <p>
                             <ul>
                                 <li>
@@ -408,7 +417,7 @@
                         </p>
                     </div>
                     <div class="resource">
-                        <h3>3. Book Comments</h3>
+                        <h3 id="comments">3. Book Comments</h3>
                         <p>
                             <ul>
                                 <li>
