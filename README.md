@@ -18,6 +18,12 @@ Introduction
 ------------
 
 This documentation is meant to enable you to consume our API and get you started right away using your favourite programming language. All endpoints and HTTP methods to be used have been detailed with a sample example for each.
+**A HTML format for this document is live at https://got-api-dsyengo.herokuapp.com/api/docs**
+
+#### Production Working React Based App
+You can checkout the code repo on demo usage.
+Repo: https://github.com/syengo254/A-GOT-Book-Series-App
+Live URL: https://appui-dsyengo.herokuapp.com/
 
 Requirements
 ------------
