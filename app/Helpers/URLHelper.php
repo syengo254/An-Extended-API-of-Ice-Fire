@@ -78,4 +78,19 @@ class URLHelper {
 
         return $characters;
     }
+
+    /**
+     * 
+     * Validate that Id's passed via get are numbers and not malicious code.
+     * Will help reduce load to external API server with garbage input
+     * 
+     * @return TRUE if valid
+     * @return FALSE if invalid
+     */
+    static public function isNumber($param){
+        $num = (int) $param;
+
+        if($num === 0) return FALSE;
+        else return TRUE;
+    }
 }

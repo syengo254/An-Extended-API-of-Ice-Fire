@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Helpers\DateHelper;
+use App\Helpers\URLHelper;
 use App\Http\Controllers\Controller;
 use App\Services\V1\CharacterAPIResource;
 use Illuminate\Http\Request;
@@ -105,6 +106,15 @@ class CharactersController extends Controller
      * @return Response
      */
     public function show($id) {
+        $is_valid = URLHelper::isNumber($id);
+
+        if(!$is_valid){ //if user passed wrong param return
+            return response()->json([
+                "success" => -1,
+                "message" => "Invalid identifier supplied.",
+            ], 404);
+        }
+
         $characterResource = new CharacterAPIResource('characters');
         $character = $characterResource->getCharacter($id);
         
@@ -125,11 +135,22 @@ class CharactersController extends Controller
             ]);
         }
         else{
-            return response()->json([
-                "success" => 0,
-                "message" => "Failed to get available characters!",
-                "error" => $characterResource->errorMessage,
-            ], 500);
+            $is404 = strpos($characterResource->error_message, '404'); //The external API responds with status 404 if id doesn't exist.
+
+            if($is404){
+                return response()->json([
+                    "success" => 0,
+                    "message" => "The specified character id: {$id} doesn't exist.",
+                    "error" => $characterResource->error_message,
+                ]);
+            }
+            else{
+                return response()->json([
+                    "success" => 0,
+                    "message" => "Failed to get characters!",
+                    "error" => $characterResource->error_message,
+                ]);
+            }
         }
     }
 }

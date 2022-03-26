@@ -275,8 +275,26 @@
                                     To get the details of a particular book, make a GET request to the URL: {{env('APP_URL')}}/api/books/&lt;id&gt;
                                     Replace &lt;id&gt; with an integer representing the books id e.g. 1, 2, 3, ... as show below:
                                     <code>
-                                        curl "{{env('APP_URL')}}/api/books/23"
+                                        curl "{{env('APP_URL')}}/api/books/1"
                                     </code>
+                                    This will return:
+                                    <pre>
+                                        {
+                                            "url": "{{ env('APP_URL') }}api/books/1",
+                                            "name": "A Game of Thrones",
+                                            "isbn": "978-0553103540",
+                                            "authors": [
+                                                "George R. R. Martin"
+                                            ],
+                                            "numberOfPages": 694,
+                                            "publisher": "Bantam Books",
+                                            "country": "United States",
+                                            "mediaType": "Hardcover",
+                                            "released": "1996-08-01T00:00:00",
+                                            "characters": [...],
+                                            "povCharacters": [...]
+                                        }
+                                    </pre>
                                 </li>
                             </ul>
                         </p>
@@ -325,6 +343,22 @@
                                     <code>
                                         curl "{{env('APP_URL')}}/api/characters/2"
                                     </code>
+                                    The response will be:
+                                    <pre>
+                                        {
+                                            "success": 1,
+                                            "data": {
+                                            "url": "http://localhost:8000/api/characters/2",
+                                            "name": "Walder",
+                                            "gender": "Male",
+                                            "culture": "",
+                                            "born": "",
+                                            "died": "",
+                                            "titles": [...],
+                                            ...},
+                                            "metadata": {}
+                                            }
+                                    </pre>
                                 </li>
                                 <li>
                                     To get a list <b>of all characters in a particular book</b> e.g. 2, make a GET request to the URL: {{env('APP_URL')}}/api/books/&lt;id&gt;/characters
@@ -338,11 +372,32 @@
                                         <code>
                                             e.g. {{env('APP_URL')}}/books/2/characters?gender=Female
                                         </code>
+                                        Sample results will be:
+                                        <pre>
+                                            {
+                                                "success": 1,
+                                                "data": {
+                                                    "book": {
+                                                        "name": "A Clash of Kings",
+                                                        "isbn": "978-0553108033",
+                                                        "url": "http://localhost:8000/api/books/2",
+                                                        "authors": [
+                                                        "George R. R. Martin"
+                                                        ]
+                                                    },
+                                                    "characters": [ /// all characters in this array will be female
+                                                        "{{env('APP_URL')}}/api/characters/2",
+                                                        "{{env('APP_URL')}}/api/characters/12",
+                                                        "{{env('APP_URL')}}/api/characters/13",
+                                                    ]
+                                                }
+                                            }
+                                        </pre>
                                     </div>
                                 </li>
                             </ul>
                             <div class="filters">
-                                All character list request are sortable by name in both ascending and descending order. This can be specified via GET URL params:
+                                All character list requests are sortable by name in both ascending and descending order. This can be specified via GET URL params:
                                 <em>&lt;sortby&gt;</em> & <em>&lt;order&gt;</em>
                                 <code>e.g. {{env('APP_URL')}}/characters?gender=Male&sortby=name&order=desc</code>
                                 <code>
@@ -363,10 +418,43 @@
                                     <code>
                                         curl "{{env('APP_URL')}}/api/books/2/comments"
                                     </code>
-                                    The above will return a list of comments for the book with an id of 2.
+                                    The above will return a list of comments for the book with an id of 2 as below:
+                                    <pre>
+                                        {
+                                            "success": 1,
+                                            "data": {
+                                                "book": {
+                                                    "name": "A Clash of Kings",
+                                                    "isbn": "978-0553108033",
+                                                    "url": "http://localhost:8000/api/books/2",
+                                                    "comment_count": 2,
+                                                    "authors": [
+                                                        "George R. R. Martin"
+                                                    ]
+                                                },
+                                                "comments": [
+                                                    {
+                                                    "id": 2,
+                                                    "isbn": "978-0553108033",
+                                                    "comment": "A good read. This takes you into the real things.",
+                                                    "user_ip": "::1",
+                                                    "created_at": "2022-03-23 19:34:40"
+                                                    },
+                                                    {
+                                                    "id": 3,
+                                                    "isbn": "978-0553108033",
+                                                    "comment": "Nice! This takes you into the real thingss.",
+                                                    "user_ip": "::1",
+                                                    "created_at": "2022-03-23 19:41:59"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    </pre>
+                                    <br/>
                                 </li>
                                 <li>
-                                    To <b>add a comment to a particular book</b>, send your POST request to the URL: {{env('APP_URL')}}/api/comments and include the parameters <b>isbn</b> and <b>comment</b>.<br />
+                                    To <b>add a comment to a particular book</b>, send your POST request to the URL: <code> {{env('APP_URL')}}/api/comments</code> and include the parameters <b>isbn</b> and <b>comment</b>.<br />
                                     Both isbn and comment parameters should of type string and the isbn should be valid for a particular book. The comment parameter is limited to a maximum of 500 characters.<br/>
                                     Generally, a POST request is sent via an HTML form. The data send to the form is usually encoded in either multipart/form-data, application/json or application/x-www-form-urlencoded content type.
                                 </li>

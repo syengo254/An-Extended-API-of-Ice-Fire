@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\V1;
 
+use App\Helpers\URLHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BookResource;
 use App\Models\Comment;
@@ -14,6 +15,15 @@ class CommentsController extends Controller
      * return comment list for a particular book
      */
     public function show($book_id){
+        $is_valid = URLHelper::isNumber($book_id);
+
+        if(!$is_valid){ //if user passed wrong param return
+            return response()->json([
+                "success" => -1,
+                "message" => "Invalid identifier supplied.",
+            ], 404);
+        }
+
         $bookResource = new BookAPIResource('books');
         $book = $bookResource->getBook($book_id);
 
@@ -30,11 +40,31 @@ class CommentsController extends Controller
             ]);
         }
         else {
-            return response()->json([
-                "success" => 0,
-                "message" => "Failed to get book comments!",
-                "error" => $bookResource->error_message,
-            ]);
+            // return response()->json([
+            //     "success" => 0,
+            //     "message" => "Failed to get book comments!",
+            //     "error" => $bookResource->error_message,
+            // ]);
+
+            $is404 = strpos($bookResource->error_message, '404'); //The external API responds with status 404 if id doesn't exist.
+
+            if($is404){
+                return response()->json([
+                    "success" => 0,
+                    "data" => [
+                        "book" => [ "name" => "Book id: {$book_id} doesn't exist."],
+                        "comments" => [],
+                    ],
+                    "message" => "Resource not found."
+                ]);
+            }
+            else{
+                return response()->json([
+                    "success" => 0,
+                    "message" => "Failed to get characters!",
+                    "error" => $bookResource->error_message,
+                ]);
+            }
         }
     }
 
