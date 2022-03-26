@@ -11,7 +11,7 @@
 *   [Limitations](#limits)
 *   [Licensing](#license)
 
-Documetation
+Documentation
 ============
 
 Introduction
