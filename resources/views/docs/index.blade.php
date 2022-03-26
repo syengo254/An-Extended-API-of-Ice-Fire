@@ -31,7 +31,7 @@
                 <li>
                     <div><a href="#usage">Resources Usage</a></div>
                     <div>
-                        <ol>
+                        <ol style="list-style-position: inside; padding-left: 1rem">
                             <li><a href="#books">Books</a></li>
                             <li><a href="#characters">Characters</a></li>
                             <li><a href="#comments">Comments</a></li>
