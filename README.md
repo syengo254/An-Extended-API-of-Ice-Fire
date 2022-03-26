@@ -22,9 +22,9 @@ This documentation is meant to enable you to consume our API and get you started
 Requirements
 ------------
 1. PHP 8.0 and above.
-1. MySQL or MariaDB server
+1. PostgreSQL, MySQL or MariaDB server
 1. Composer dependency manager for PHP.
-1. Access to a terminal prompt.
+1. Access to a terminal prompt (or any other means to access and edit the .env.example variables to match your setup).
 1. Git & Git Bash to run git commands.
 
 Installation
