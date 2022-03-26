@@ -168,7 +168,7 @@ Usage
 ```CMD
 curl "http://localhost:8000/api/books"
 ```
-	Available filters: _<name>_ `e.g. http://localhost:8000/api/books?name=A Game of Thrones` This will return:
+	Available filters: _\<name\>_ `e.g. http://localhost:8000/api/books?name=A Game of Thrones` This will return:
 	```JSON
 		{
 			"success": 1,
@@ -191,7 +191,7 @@ curl "http://localhost:8000/api/books/23"
 ```CMD
 curl "http://localhost:8000/api/characters"
 ```
-Available filters: _<name>_, _<gender>_, `e.g. http://localhost:8000/api/characters?name=Nysterica` This will return:
+Available filters: _\<name\>_, _\<gender\>_, `e.g. http://localhost:8000/api/characters?name=Nysterica` This will return:
     ```JSON
 	{
 		"success": 1,
@@ -220,7 +220,7 @@ curl "http://localhost:8000/api/characters/2"
 ```CMD
 curl "http://localhost:8000/api/books/2/characters"
 ```
-Available filters: _<name>_, _<gender>_ `e.g. http://localhost:8000/books/2/characters?name=Nysterica` `e.g. http://localhost:8000/books/2/characters?gender=Female`
+Available filters: _\<name\>_, _\<gender\>_ `e.g. http://localhost:8000/books/2/characters?name=Nysterica` `e.g. http://localhost:8000/books/2/characters?gender=Female`
     
 
 All character list request are sortable by name in both ascending and descending order. This can be specified via GET URL params: _<sortby>_ & _<order>_ `e.g. http://localhost:8000/characters?gender=Male&sortby=name&order=desc` `e.g. http://localhost:8000/books/2/characters?page=12&pageSize=7&sortby=name&order=asc` Default sort order will default to asc (ascending) if not specified.
