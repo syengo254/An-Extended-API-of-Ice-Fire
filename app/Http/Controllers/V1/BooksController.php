@@ -80,7 +80,7 @@ class BooksController extends Controller
         $bookResource = new BookAPIResource('books');
         $book = $bookResource->getBook($id);
 
-        if($book){
+        if($book !== FALSE){
             $book_comments = Comment::getBookComments($book->isbn);
             $book->comments = $book_comments["comments"];
             $book->comments_count = $book_comments["count"];
@@ -124,9 +124,10 @@ class BooksController extends Controller
         $bookResource = new BookAPIResource('books');
 
         $book = $bookResource->getBook($book_id);
-        $characters = $bookResource->getBookCharacters($book_id);
 
-        if($book){
+        if($book !== FALSE){
+            $characters = $bookResource->getBookCharacters($book_id);
+            
             return response()->json([
                 "success" => 1,
                 "data" => [

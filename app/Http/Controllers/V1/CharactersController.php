@@ -134,7 +134,7 @@ class CharactersController extends Controller
         $characterResource = new CharacterAPIResource('characters');
         $character = $characterResource->getCharacter($id);
         
-        if($character){
+        if($character !== FALSE){
             $age = DateHelper::getCharacterAge($character->born, $character->died);
 
             return response()->json([
