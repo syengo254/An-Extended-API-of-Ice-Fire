@@ -29,7 +29,7 @@ class CommentsController extends Controller
 
         if($book){
             $comments = Comment::where('isbn', "=", $book->isbn)->get();
-            $book->comment_count = $comments->count();
+            $book->comments_count = $comments->count();
 
             return response()->json([
                 "success" => 1,
