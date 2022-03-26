@@ -71,7 +71,8 @@ The following table below highlights the available endpoints, HTTP method and a 
 |   5.	|   [/api/characters](http://localhost:8000/api/characters)	|   GET	|   Returns a JSON response of all available book characters.	|   	|
 |   6.	|   [/api/characters/23](http://localhost:8000/api/characters/23)	|   GET	|   Return a JSON response with the character details with an **id** of 23.	|   	|
 |   7.	|   [/api/comments](http://localhost:8000/api/comments)	|   POST	|   Send a POST request to this endpoint to add a comment for a particular book that is identified by its ISBN number. Required params are:  1.  isbn - ISBN number - text, 1.  comment - The comment text - limited to 500 characters	|   	|
-**Note that the endpoint URL is to appended to the domain hosting the application i.e. if your domain is www.example.com, then the complelet endpoint URL will be www.example.com/api/books for the books GET path.**
+
+**__Note that the endpoint URL is to appended to the domain hosting the application i.e. if your domain is www.example.com, then the complelet endpoint URL will be www.example.com/api/books for the books GET path.__**
 
 
 Response Structure
