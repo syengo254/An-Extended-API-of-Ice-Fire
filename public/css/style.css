@@ -124,6 +124,15 @@ ul#side-panel-menu > li > a {
     padding: .5rem 1rem;
 }
 
+ul#side-panel-menu > li > div > a {
+    display: block;
+    padding: .5rem 1rem;
+}
+
+li a, li a:visited {
+    color: #0000dd;
+}
+
 ul#side-panel-menu > li:hover {
     background: rgb(221, 221, 221);
 }
