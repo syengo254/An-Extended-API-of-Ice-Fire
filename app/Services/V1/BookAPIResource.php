@@ -37,7 +37,7 @@ class BookAPIResource extends APIResource {
         if(!$this->error){
             $book = $response["body"];
             $book = URLHelper::modifyBooksURLs([$book])[0];
-            $this->bookCharacters = $book->characters;
+            $this->bookCharacters = URLHelper::toLocalURLs( $book->characters );
 
             return  $book;
         }

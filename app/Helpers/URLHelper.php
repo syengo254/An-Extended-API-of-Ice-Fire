@@ -80,6 +80,19 @@ class URLHelper {
     }
 
     /**
+     * transforms an array of URLs from remote domain to app's domain.
+     * e.g. https://www.anapioficeandfire.com/api/characters/341 to http://localhost/api/characters/341
+     * 
+     * @return array of the new modified urls
+     */
+    public static function toLocalURLs($urls) {
+        foreach($urls as $url) {
+            $url = str_replace('https://www.anapioficeandfire.com', env('APP_URL'), $url);
+        }
+        return $urls;
+    }
+
+    /**
      * 
      * Validate that Id's passed via get are numbers and not malicious code.
      * Will help reduce load to external API server with garbage input
