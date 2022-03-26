@@ -22,8 +22,9 @@ This documentation is meant to enable you to consume our API and get you started
 
 #### Production Working React Based App
 You can checkout the code repo on demo usage.
-Repo: https://github.com/syengo254/A-GOT-Book-Series-App
-Live URL: https://appui-dsyengo.herokuapp.com/
+
+* Repo: https://github.com/syengo254/A-GOT-Book-Series-App
+* Live URL: https://appui-dsyengo.herokuapp.com/
 
 Requirements
 ------------
