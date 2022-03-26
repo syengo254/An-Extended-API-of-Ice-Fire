@@ -34,7 +34,7 @@ class CommentsController extends Controller
             return response()->json([
                 "success" => 1,
                 "data" => [
-                    "book" => (new BookResource($book, false))->withOnly(['name', 'isbn', 'url', 'comment_count', 'authors']),
+                    "book" => (new BookResource($book, false))->withOnly(['name', 'isbn', 'url', 'comments_count', 'authors']),
                     "comments" => $comments->toArray(),
                 ],
             ]);
